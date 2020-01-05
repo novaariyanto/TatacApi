@@ -652,7 +652,7 @@
 	    require_once("config.php");
 	    $input = @file_get_contents("php://input");
 	    $event_json = json_decode($input,true);
-		//print_r($event_json);
+		// print_r($event_json);
 	
 		if(isset($event_json['fb_id']) && isset($event_json['my_fb_id']))
 		{
