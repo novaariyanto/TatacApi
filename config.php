@@ -6,7 +6,11 @@
     
 	//web API path
 	//eg http://domain.com/API/
-	$API_path="http://192.168.1.7/apitic/";
+//<<<<<<< HEAD
+	$API_path="http://kejarkoding.com/TatacApi/";
+//=======
+//	$API_path="http://192.168.1.7/apitic/";
+//>>>>>>> 62870c7579b7cda799b92d5b48fe71d956ea64f4
 	
 	//this is firebase server key to send push notications
 	
@@ -18,8 +22,8 @@
 	//database configration
 	$servername = "localhost";
 	$database = "db_tictic";
-	$username = "root";
-	$password = "";
+	$username = "kejarkoding";
+	$password = "Sekolah100%";
     
 	// Create connection
 
