@@ -6,7 +6,7 @@
     
 	//web API path
 	//eg http://domain.com/API/
-	$API_path="http://172.16.2.181/apitic/";
+	$API_path="http://192.168.1.7/apitic/";
 	
 	//this is firebase server key to send push notications
 	

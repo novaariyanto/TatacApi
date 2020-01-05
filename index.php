@@ -339,8 +339,8 @@
 		header('Content-Type: application/json'); 
 		//print_r($event_json);
 		
-		// if(isset($event_json['fb_id']) && isset($event_json['picbase64'])  && isset($event_json['videobase64']))
-		// {   
+		if(isset($event_json['fb_id']) && isset($event_json['picbase64'])  && isset($event_json['videobase64']))
+		{   
 		    $fb_id=htmlspecialchars(strip_tags($event_json['fb_id'] , ENT_QUOTES));
 		    $description=htmlspecialchars(strip_tags($event_json['description'] , ENT_QUOTES));
 		    $sound_id=htmlspecialchars(strip_tags($event_json['sound_id'] , ENT_QUOTES));
@@ -445,18 +445,18 @@
 			
 			
 			
-		// }
-		// else
-		// {
-		// 	$array_out = array();
-		// 	$array_out[] = 
-		// 		array(
-		// 			"response" => "json parem missing"
-		// 		);
+		}
+		else
+		{
+			$array_out = array();
+			$array_out[] = 
+				array(
+					"response" => "json parem missing"
+				);
 			
-		// 	$output=array( "code" => "201", "msg" => $array_out);
-		// 	print_r(json_encode($output, true));
-		// }
+			$output=array( "code" => "201", "msg" => $array_out);
+			print_r(json_encode($output, true));
+		}
 	
 	}
 	
@@ -469,8 +469,8 @@
 	    // $event_json = json_decode($input,true);
 		// print_r($event_json);
 	
-		// if(isset($event_json['fb_id']))
-		// {
+		if(isset($event_json['fb_id']))
+		{
 			$fb_id= "109975883271383559219";
 			$token="cO0ELHfbU-I:APA91bGvNIY-rfUK0bW-rjV3H-TvLr43BxyW2ytfWHVt0vabjtPlpsNoRnzp8Fvx6z1_cqtvUi063XJYpXNjHfpuuPNVgOGPLFM9Ki4TDdOHPifljp4zGuVarnIpac3yVlSHoHPoQ-Nx";
 			
@@ -539,18 +539,18 @@
     		$output=array( "code" => "200", "msg" => $array_out);
     		print_r(json_encode($output, true));
     		
-		// }
-		// else
-		// {
-		// 	$array_out = array();
+		}
+		else
+		{
+			$array_out = array();
 					
-		// 	 $array_out[] = 
-		// 		array(
-		// 		"response" =>"Json Parem are missing");
+			 $array_out[] = 
+				array(
+				"response" =>"Json Parem are missing");
 			
-		// 	$output=array( "code" => "201", "msg" => $array_out);
-		// 	print_r(json_encode($output, true));
-		// }
+			$output=array( "code" => "201", "msg" => $array_out);
+			print_r(json_encode($output, true));
+		}
 	}
 	
 	function SearchByHashTag()
@@ -654,14 +654,14 @@
 	    require_once("config.php");
 	    $input = @file_get_contents("php://input");
 	    $event_json = json_decode($input,true);
-		//print_r($event_json);
+		// print_r($input);
 	
 		if(isset($event_json['fb_id']) && isset($event_json['my_fb_id']))
 		{
 			$fb_id=htmlspecialchars(strip_tags($event_json['fb_id'] , ENT_QUOTES));
 			$my_fb_id=htmlspecialchars(strip_tags($event_json['my_fb_id'] , ENT_QUOTES));
-			
-		    $query1=mysqli_query($conn,"select * from users where fb_id='".$fb_id."' ");
+			echo $sqle = "select * from users where fb_id='".$fb_id."' ";
+		    $query1=mysqli_query($conn,$sqle);
 		    $rd=mysqli_fetch_object($query1);
 		    if(mysqli_num_rows($query1))
 		    {
