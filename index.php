@@ -466,14 +466,13 @@
 	    require_once("config.php");
 		$input = @file_get_contents("php://input");
 		header('Content-Type: application/json');
-	    // $event_json = json_decode($input,true);
+	    $event_json = json_decode($input,true);
 		// print_r($event_json);
 	
 		if(isset($event_json['fb_id']))
 		{
-			$fb_id= "109975883271383559219";
-			$token="cO0ELHfbU-I:APA91bGvNIY-rfUK0bW-rjV3H-TvLr43BxyW2ytfWHVt0vabjtPlpsNoRnzp8Fvx6z1_cqtvUi063XJYpXNjHfpuuPNVgOGPLFM9Ki4TDdOHPifljp4zGuVarnIpac3yVlSHoHPoQ-Nx";
-			
+			$fb_id=htmlspecialchars(strip_tags($event_json['fb_id'] , ENT_QUOTES));
+			$token=$event_json['token'];
 			@mysqli_query($conn,"update users set tokon='".$token."' where fb_id='".$fb_id."' ");
 			
 			$query=mysqli_query($conn,"select * from videos order by rand() ");
@@ -660,7 +659,8 @@
 		{
 			$fb_id=htmlspecialchars(strip_tags($event_json['fb_id'] , ENT_QUOTES));
 			$my_fb_id=htmlspecialchars(strip_tags($event_json['my_fb_id'] , ENT_QUOTES));
-			echo $sqle = "select * from users where fb_id='".$fb_id."' ";
+			
+			$sqle = "select * from users where fb_id='".$fb_id."' ";
 		    $query1=mysqli_query($conn,$sqle);
 		    $rd=mysqli_fetch_object($query1);
 		    if(mysqli_num_rows($query1))
